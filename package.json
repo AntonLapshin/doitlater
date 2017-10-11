@@ -1,7 +1,7 @@
 {
-  "name": "doitlazy",
+  "name": "doitlater",
   "version": "0.0.1",
-  "description": "Global Lazy Loading",
+  "description": "Global later Loading",
   "scripts": {
     "test-manual": "./node_modules/.bin/mocha --require babel-register ./src/**/*.test.js --timeout 999999",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./src/ --require babel-register --timeout 999999",
@@ -12,13 +12,13 @@
     "build-es5": "./node_modules/.bin/rollup -c rollup.es5.config.js",
     "build": "npm run build-es6 && npm run build-es5"
   },
-  "main": "bin/doitlazy.es6.js",
+  "main": "bin/doitlater.es6.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AntonLapshin/doitlazy.git"
+    "url": "git+https://github.com/AntonLapshin/doitlater.git"
   },
   "keywords": [
-    "lazy",
+    "later",
     "promise",
     "loading",
     "load script",
@@ -28,9 +28,9 @@
   "author": "Anton Lapshin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AntonLapshin/doitlazy/issues"
+    "url": "https://github.com/AntonLapshin/doitlater/issues"
   },
-  "homepage": "https://github.com/AntonLapshin/doitlazy#readme",
+  "homepage": "https://github.com/AntonLapshin/doitlater#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",

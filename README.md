@@ -1,2 +1,2 @@
-# doitlazy
+# doitlater
 Global Lazy Loading
