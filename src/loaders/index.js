@@ -1,8 +1,8 @@
-import { loadImage } from "./loaders/image";
-import { loadScript } from "./loaders/script";
-import { loadStyle } from "./loaders/style";
-import { loadView } from "./loaders/view";
-import { loadJSON } from "./loaders/json";
+import { loadImage } from "./image";
+import { loadScript } from "./script";
+import { loadStyle } from "./style";
+import { loadView } from "./view";
+import { loadJSON } from "./json";
 
 export default [
   { ext: /(png|jpg|jpeg|gif|apng|svg|bmp|ico)$/, load: loadImage },
