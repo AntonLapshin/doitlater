@@ -32,7 +32,7 @@ const loadStyle = (url, resolve) => {
 const loadView = (url, resolve) => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.responseText.length > 0) {
       resolve(xhr.responseText);
     }
@@ -65,7 +65,7 @@ var loaders = [
 
 /**
  * Run Later: Ideally run smth when nothing happens
- * @param {function} callback
+ * @param {function} fn
  */
 const runLater =
   window.requestIdleCallback ||
@@ -117,7 +117,7 @@ const add = (name, promise) => (addDefer().promise = promise);
  * @returns {Promise}
  */
 const load = (name, resources) => {
-  if (typeof resources === "string") {
+  if (resources.constructor !== Array) {
     resources = [resources];
   }
   const promises = resources.map(resource => {
@@ -139,7 +139,9 @@ const load = (name, resources) => {
       });
     });
   });
-  return (addDefer(name).promise = Promise.all(promises));
+  const defer = addDefer(name);
+  Promise.all(promises).then(defer.resolve, defer.reject);
+  return defer.promise;
 };
 
 exports.runLater = runLater;

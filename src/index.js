@@ -54,7 +54,7 @@ export const add = (name, promise) => (addDefer().promise = promise);
  * @returns {Promise}
  */
 export const load = (name, resources) => {
-  if (typeof resources === "string") {
+  if (resources.constructor !== Array) {
     resources = [resources];
   }
   const promises = resources.map(resource => {
@@ -76,5 +76,7 @@ export const load = (name, resources) => {
       });
     });
   });
-  return (addDefer(name).promise = Promise.all(promises));
+  const defer = addDefer(name);
+  Promise.all(promises).then(defer.resolve, defer.reject);
+  return defer.promise;
 };
