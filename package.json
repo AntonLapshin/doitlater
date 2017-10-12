@@ -6,7 +6,7 @@
     "test-manual": "./node_modules/.bin/mocha --require babel-register ./src/**/*.test.js --timeout 999999",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./src/ --require babel-register --timeout 999999",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
-    "jsdoc2md": "./node_modules/.bin/jsdoc2md src/*.js > api.md",
+    "jsdoc2md": "./node_modules/.bin/jsdoc2md src/*.js > API.md",
     "commit": "./node_modules/.bin/git-cz",
     "build-es6": "./node_modules/.bin/rollup -c rollup.es6.config.js",
     "build-es5": "./node_modules/.bin/rollup -c rollup.es5.config.js",
