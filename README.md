@@ -1,6 +1,8 @@
 # doitlater
 
-Increase page load speed, just load/execute unnecessary things later!
+![](https://pasteboard.co/GOAeMC1.png)
+
+Increase page loading speed, just load/execute unnecessary things later!
 
 Defer scripts, styles, html, json, images, functions!
 
@@ -30,7 +32,7 @@ doitlater.waitFor("DOMReady").then(() => {
   });
 });
 
-window.addEventListener('load', function(){
+window.addEventListener('load', () => {
   doitlater.add("DOMReady", Promise.resolve);
 });
 ```
@@ -62,7 +64,7 @@ doitlater.waitFor("DOMReady").then(() => {
   doitlater.load("logging", () => { console.log("DOM Ready")});
 });
 
-doitlater.waitFor("logging").then(function(){
+doitlater.waitFor("logging").then(() => {
   console.log("After logging");
 });
 ```

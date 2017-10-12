@@ -2,7 +2,7 @@ import loaders from "./loaders";
 
 /**
  * Run Later: Ideally run smth when nothing happens
- * @param {function} callback
+ * @param {function} fn
  */
 export const runLater =
   window.requestIdleCallback ||

@@ -35,7 +35,7 @@ Run Later: Ideally run smth when nothing happens
 
 | Param | Type |
 | --- | --- |
-| callback | <code>function</code> | 
+| fn | <code>function</code> | 
 
 <a name="createDefer"></a>
 

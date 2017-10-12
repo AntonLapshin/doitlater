@@ -1,7 +1,7 @@
 {
   "name": "doitlater",
-  "version": "0.0.1",
-  "description": "Global later Loading",
+  "version": "0.0.2",
+  "description": "Lazy Loading",
   "scripts": {
     "test-manual": "./node_modules/.bin/mocha --require babel-register ./src/**/*.test.js --timeout 999999",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- ./src/ --require babel-register --timeout 999999",
@@ -23,6 +23,11 @@
     "loading",
     "load script",
     "load html",
+    "load style",
+    "load json",
+    "async",
+    "lazy loading",
+    "load optimization",
     "defer"
   ],
   "author": "Anton Lapshin",
