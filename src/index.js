@@ -38,7 +38,7 @@ const addDefer = name => _defers[name] || (_defers[name] = createDefer());
  * @param {string} name
  * @returns {Promise}
  */
-export const get = name => addDefer().promise;
+export const waitFor = name => addDefer(name).promise;
 
 /**
  * Add a promise to storage
@@ -51,31 +51,28 @@ export const add = (name, promise) => (addDefer().promise = promise);
  * Load resource
  * @param {string} name
  * @param {string|function|Array<string|function>} resources
- * @param {Promise} waitForIt [optional] Promise that has to be completed before execution
  * @returns {Promise}
  */
-export const load = (name, resources, waitForIt) => {
+export const load = (name, resources) => {
   if (typeof resources === "string") {
     resources = [resources];
   }
   const promises = resources.map(resource => {
     return new Promise((resolve, reject) => {
-      (waitForIt || Promise.resolve()).then(() => {
-        runLater(() => {
-          if (typeof resource === "function") {
-            resource();
-            resolve();
-          } else {
-            const ext = resource.split(".").pop();
-            const loader = loaders.find(l => l.ext.test(ext));
-            if (!loader) {
-              throw new Error(
-                `Loader for <${ext}> files has not been implemented yet`
-              );
-            }
-            loader(resource, resolve, reject);
+      runLater(() => {
+        if (typeof resource === "function") {
+          resource();
+          resolve();
+        } else {
+          const ext = resource.split(".").pop();
+          const loader = loaders.find(l => l.ext.test(ext));
+          if (!loader) {
+            throw new Error(
+              `Loader for <${ext}> files has not been implemented yet`
+            );
           }
-        });
+          loader.load(resource, resolve, reject);
+        }
       });
     });
   });
