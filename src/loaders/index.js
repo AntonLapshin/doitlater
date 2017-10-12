@@ -6,8 +6,8 @@ import { loadJSON } from "./json";
 
 export default [
   { ext: /(png|jpg|jpeg|gif|apng|svg|bmp|ico)$/, load: loadImage },
-  { ext: /(js)/, load: loadScript },
-  { ext: /(css)/, load: loadStyle },
-  { ext: /(html)/, load: loadView },
-  { ext: /(json)/, load: loadJSON }
+  { ext: /(js)$/, load: loadScript },
+  { ext: /(css)$/, load: loadStyle },
+  { ext: /(html)$/, load: loadView },
+  { ext: /(json)$/, load: loadJSON }
 ];

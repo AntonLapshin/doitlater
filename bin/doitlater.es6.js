@@ -40,27 +40,27 @@ const loadView = (url, resolve) => {
   xhr.send();
 };
 
-const loadJSON = (url, resolve) => {
+const loadJSON = (url, resolve, reject) => {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", url, true);
-  request.onload = () => {
-    if (request.status >= 200 && request.status < 400) {
-      const data = JSON.parse(request.responseText);
+  xhr.onload = () => {
+    if (xhr.status >= 200 && xhr.status < 400) {
+      const data = JSON.parse(xhr.responseText);
       resolve(data);
     } else {
       reject();
     }
   };
-  request.onerror = reject;
+  xhr.onerror = reject;
   xhr.send();
 };
 
 var loaders = [
   { ext: /(png|jpg|jpeg|gif|apng|svg|bmp|ico)$/, load: loadImage },
-  { ext: /(js)/, load: loadScript },
-  { ext: /(css)/, load: loadStyle },
-  { ext: /(html)/, load: loadView },
-  { ext: /(json)/, load: loadJSON }
+  { ext: /(js)$/, load: loadScript },
+  { ext: /(css)$/, load: loadStyle },
+  { ext: /(html)$/, load: loadView },
+  { ext: /(json)$/, load: loadJSON }
 ];
 
 /**
