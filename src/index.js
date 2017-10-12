@@ -45,7 +45,11 @@ export const waitFor = name => addDefer(name).promise;
  * @param {string} name
  * @param {Promise} promise
  */
-export const add = (name, promise) => (addDefer().promise = promise);
+export const add = (name, promise) => {
+  const defer = addDefer(name);
+  promise.then(defer.resolve, defer.reject);
+  return defer.promise;
+}
 
 /**
  * Load resource
@@ -76,7 +80,5 @@ export const load = (name, resources) => {
       });
     });
   });
-  const defer = addDefer(name);
-  Promise.all(promises).then(defer.resolve, defer.reject);
-  return defer.promise;
+  return add(name, Promise.all(promises));
 };
